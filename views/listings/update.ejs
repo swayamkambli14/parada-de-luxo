@@ -1,0 +1,66 @@
+<% layout("/layouts/boilerplate") %>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+         <!-- // See the differnce// -->
+
+<!-- **will work only if all the fields are updated or else error** -->
+
+        <!-- <form method="post" action="/update/<%= allListing._id %>?_method=PUT">
+
+    <label for="title">Update your title:</label><br>
+    <input type="text" id="title" name="title" placeholder="Enter your full title">
+        <br><br>
+    <label for="description">Update Message:</label><br>
+    <textarea id="description" name="description" rows="5" cols="40" placeholder="Type your description here..."></textarea>
+        <br><br>
+    <label for="price">Update Price:</label>
+    <input type="text" id="price" name="price" placeholder="Enter Price">
+        <br><br>
+    <label for="location">Update your City:</label>
+    <input type="text" id="location" name="location" placeholder="Enter your City">
+        <br><br>
+    <label for="country">Update your Country:</label>
+    <input type="text" id="country" name="country" placeholder="Enter your Country">
+        <br><br>
+    <button type="submit">Update</button>
+    </form> -->
+
+    
+<!-- //will work evenif any one of the field is updated -->
+<div class="col-8 offset-2">
+    <form method="post" action="/update/<%= allListing._id %>?_method=PUT">
+
+        <div class="col-md-8" style="padding-top: 0.6rem;">
+    <label for="title" >Update title:</label>
+    <input type="text" id="title" name="title" value="<%= allListing.title %>" class="form-control" required><br>
+        </div>
+
+    <label for="description">Update Message:</label><br>
+    <textarea id="description" name="description" rows="2" cols="40" class="form-control"><%= allListing.description %> required</textarea><br>
+
+    <label for="image">Update Image URL:</label>
+    <input type="text" id="image" name="image[url]" value="<%= allListing.image.url  %>" placeholder="Enter url" class="form-control" required><br>
+
+    <div class="row">
+        <div class="col-md-4">    
+    <label for="price">Update Price:</label>
+    <input type="text" id="price" name="price" value="<%= allListing.price %>" class="form-control" required><br>
+        </div>
+        
+        <div class="col-md-8">
+    <label for="location">Update City:</label>
+    <input type="text" id="location" name="location" value="<%= allListing.location %>" class="form-control" required><br>
+        </div>
+
+    </div>
+
+    <label for="country">Update Country:</label>
+    <input type="text" id="country" name="country" value="<%= allListing.country %>" class="form-control" required><br>
+    <button type="submit" style="background-color: #fe424d;color: white;border-radius: 5px;border: none;">Update</button>
+    </form>
+ </div>

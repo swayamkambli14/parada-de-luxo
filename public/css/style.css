@@ -1,0 +1,51 @@
+.navbar{
+    height: 5rem;
+   background-color: white;
+}
+
+.navbar .nav-link {
+  color: #222222 !important;   
+}
+
+.navbar .nav-link:hover {
+  text-decoration: underline !important;
+}
+
+.fa-spa{
+   color: #fe424d; 
+   font-size: 2rem;
+}
+
+footer a {
+  text-decoration: none; 
+  color: inherit;         
+}
+
+footer a:hover {
+  text-decoration: underline !important;  /* underline on hover */
+  text-decoration-color: white;
+}
+
+.row{
+  padding-top: 0.6rem;
+}
+
+.card{
+  border: none !important;
+  margin-bottom: 2rem ;
+
+}
+
+.card-img-top{
+  border-radius: 1rem !important;
+  width: 100% !important; 
+  object-fit: cover !important; 
+}
+
+.card-img-top:hover{
+opacity: 0.85;
+}
+
+.card-body{
+  padding: 0 !important;
+}

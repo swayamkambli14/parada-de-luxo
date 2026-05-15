@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>parada de luxo— Experience Luxury</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#0f766e; /* teal */
+      --accent-2:#06b6d4; /* cyan */
+      --bg:#ffffff;
+      --muted:#6b7280;
+      --glass: rgba(255,255,255,0.6);
+      --shadow: 0 8px 30px rgba(2,6,23,0.08);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#f8fafc, #ffffff);color:#0f172a}
+
+    /* Header container */
+    .site-header{
+      position:sticky;top:0;z-index:60;backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+      box-shadow: var(--shadow);
+      border-bottom: 1px solid rgba(15,23,42,0.04);
+    }
+    .container{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+
+    /* Brand */
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;box-shadow:0 6px 20px rgba(6,182,212,0.12)}
+    .brand h1{font-size:16px;margin:0}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    /* Navigation */
+    nav{display:flex;align-items:center;gap:18px}
+    .nav-list{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    .nav-list a{padding:8px 12px;border-radius:8px;text-decoration:none;color:inherit;font-weight:600;font-size:14px}
+    .nav-list a:hover{background:rgba(15,118,110,0.06);color:var(--accent)}
+
+    /* Search and actions */
+    .actions{display:flex;align-items:center;gap:12px}
+    .search{display:flex;align-items:center;padding:8px 10px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);background:white;min-width:220px}
+    .search input{border:0;outline:none;font-size:14px;background:transparent;width:100%}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn--primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white}
+    .btn--ghost{background:transparent;border:1px solid rgba(15,23,42,0.06)}
+
+    /* Mobile menu */
+    .hamburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;background:transparent;border:1px solid rgba(15,23,42,0.04);cursor:pointer}
+
+    /* Hero (compact) */
+    .hero-compact{display:flex;flex-direction:column;gap:10px;padding:18px 20px;border-radius:14px;background:linear-gradient(180deg,rgba(6,182,212,0.06), rgba(15,118,110,0.04));margin:12px auto;max-width:1200px}
+    .hero-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .hero-title{font-size:20px;margin:0}
+    .hero-sub{color:var(--muted);margin:0;font-size:14px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .nav-list{display:none}
+      .search{min-width:140px}
+      .hamburger{display:flex}
+      .actions .btn--cta{display:none}
+      .hero-compact{padding:12px}
+    }
+
+    @media (max-width:480px){
+      .container{padding:12px}
+      .brand h1{font-size:15px}
+      .logo{width:40px;height:40px}
+    }
+
+    /* Dropdown example */
+    .dropdown{position:relative}
+    .dropdown-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:200px;background:white;border-radius:10px;box-shadow:0 10px 30px rgba(2,6,23,0.08);padding:10px;display:none}
+    .dropdown-menu a{display:block;padding:8px;border-radius:8px;text-decoration:none;color:var(--muted);font-weight:600}
+    .dropdown-menu a:hover{color:var(--accent)}
+    .dropdown[aria-expanded="true"] .dropdown-menu{display:block}
+
+    /* footer */
+    .footer{transform: translate(+0%,+260%);}
+
+    /* image */
+    .video1{display: flex;}
+    .video2{display: flex;}
+    .image1{border-radius: 10px; height: 248px;width: 440px;margin-right: 15px;}
+    .video{padding-top: 30px;padding-left: 120px}
+  </style>
+</head>
+<body>
+  <!-- Top navigation / header -->
+  <header class="site-header" role="banner">
+    <div class="container">
+      <!-- Brand -->
+      <a href="#" class="brand" aria-label="Wanderly Home">
+        <div class="logo">PLX</div>
+        <div>
+          <h1>parada de luxo</h1>
+          <p>Curated travel & experiences</p>
+        </div>
+      </a>
+
+      <!-- Main navigation -->
+      <nav role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="#destinations">Destinations</a></li>
+          <li class="dropdown" id="experiences" aria-haspopup="true" aria-expanded="false">
+            <a href="#experiences" onclick="toggleDropdown(event, 'experiences')">Experiences ▾</a>
+            <div class="dropdown-menu" role="menu" aria-label="Experiences menu">
+              <a href="#adventure">Adventure</a>
+              <a href="#luxury">Luxury</a>
+              <a href="#family">Family</a>
+            </div>
+          </li>
+          <li><a href="#blog">Travel Guides</a></li>
+          <li><a href="#about">About Us</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search & CTA -->
+      <div class="actions">
+        <div class="search" role="search" aria-label="Search trips">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35" stroke="rgba(15,23,42,0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11" cy="11" r="6" stroke="rgba(15,23,42,0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></circle></svg>
+          <input type="search" placeholder="Search destinations, tours..." aria-label="Search" />
+        </div>
+
+        <button class="btn btn--ghost" onclick="location.href='#login'">Log in</button>
+        <button class="btn btn--primary" onclick="location.href='#book'">Book a Trip</button>
+
+        <button class="hamburger" aria-label="Open menu" onclick="openMobileMenu()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Compact hero strip that sits below the header (optional) -->
+  <section class="hero-compact" aria-label="Quick search and highlights">
+    <div class="hero-row">
+      <div>
+        <h2 class="hero-title">Find your next escape</h2>
+        <p class="hero-sub">Hand-picked trips, local guides, and sustainable stays — curated just for you.</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="btn btn--ghost" href="#explore">Explore Trips</a>
+        <a class="btn btn--primary" href="#specials">Limited Offers</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<div class="video">
+  <div class="video1">
+
+  <div>
+
+  <img class="image1" src="https://www.trulyclassy.com/wp-content/uploads/2021/06/The-Ritz-Carlton-Bali-Featured.jpg" alt="">
+  <div class="iconandtxt">  
+  <div class="contandtxt">
+  <div class="contentname"> <p> <strong>Villa in Alibag</strong></p></div>
+  
+  <div class="channel"> <p> 3 Double Bed </p></div>
+  <div class="views"> <p>  ₹81,017 for 5 nights </p></div>
+
+</div>
+</div>
+
+</div> 
+
+<div>
+
+    <img class="image1" src="https://www.hotels.club/wp-content/uploads/2016/10/hotel-header.jpg">
+    <div class="iconandtxt">
+      <div class="contandtxt">
+      <div class="contentname"><p> <strong>DODGE the Hellcat</strong></p></div>
+      <div class="text">
+      <div class="channel"> <p> DODGE OFFICIAL &#10004</p></div>
+      <div class="views"> <p> 115M views &#183 11 years ago</p></div>
+    </div>
+    </div>
+    </div>
+
+  </div>
+    
+    <div>
+
+
+</div> 
+
+<div>
+
+  <img class="image1" src="https://pix6.agoda.net/hotelImages/4893969/0/fd06a845ea9b7911e2dc772b5ae85697.jpg?s=1024x768">
+  <div class="iconandtxt">
+ <div class="contandtxt">
+    <div class="contentname"><p> <strong>AUDI the delusion</strong></p></div>
+    <div class="text">
+    <div class="channel"> <p> AUDI OFFICIAL &#10004</p></div>
+    <div class="views"> <p> 120M views &#183 11 years ago</p></div>
+  </div>
+  </div>
+ </div>
+
+</div>
+
+</div>
+
+<div class="video2">
+
+  <div>
+
+    <img class="image1" src="https://blogs-images.forbes.com/petertaylor/files/2016/11/MBH-Architectural-Gardens-Exterior-300DPI-1200x800.jpg" alt="">
+    <div class="iconandtxt">
+    <div class="contandtxt">
+    <div class="contentname"> <p> <strong>LAMBORGHINI the art</strong></p></div>
+    <div class="text">
+    <div class="channel"> <p>LAMBORGHINI OFFICIAL &#10004 </p></div>
+    <div class="views"> <p> 105M views &#183 11 years ago </p></div>
+  </div> 
+  </div>
+  </div>
+  
+  </div>
+
+  
+<div>
+
+<img class="image1" src="https://cdn.luxaterra.com/media/20220916121348/best-hotels-zanzibar-white-sand-luxury-villas-zanzibar-luxa-terra-1650x1100.jpg">
+<div class="iconandtxt">
+ <div class="contandtxt">
+  <div class="contentname"><p> <strong>RANGE ROVER the class</strong></p></div>
+  <div class="text">
+  <div class="channel"> <p> RANGE ROVER OFFICIAL &#10004</p></div>
+  <div class="views"> <p> 110M views &#183 11 years ago</p></div>
+</div>
+</div>
+</div>
+
+
+</div> 
+    
+    <div>
+
+      <img class="image1" src="http://www.jetsetmag.com/wp-content/uploads/2016/10/1-e1477519205265.jpg">
+      <div class="iconandtxt">
+     <div class="contandtxt">
+        <div class="contentname"><p> <strong>G-WAGON a Mercedes prensent</strong></p></div>
+        <div class="text">
+        <div class="channel"> <p> MERCEDES OFFICIAL &#10004</p></div>
+        <div class="views"> <p> 130M views &#183 11 years ago</p></div>
+      </div>
+      </div>
+     </div>
+    
+    </div>
+
+</div>
+</div>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      
+      <!-- Column 1 -->
+      <div class="col-md-4 mb-3">
+        <h5>About Us</h5>
+        <p>
+          Wanderly — curated travel and unique experiences to make your journeys unforgettable.
+        </p>
+      </div>
+      
+      <!-- Column 2 -->
+      <div class="col-md-4 mb-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#destinations" class="text-white text-decoration-none">Destinations</a></li>
+          <li><a href="#experiences" class="text-white text-decoration-none">Experiences</a></li>
+          <li><a href="#blog" class="text-white text-decoration-none">Blog</a></li>
+        </ul>
+      </div>
+      
+      <!-- Column 3 -->
+      <div class="col-md-4 mb-3">
+        <h5>Contact</h5>
+        <p>Email: info@wanderly.com</p>
+        <p>Phone: +91 98765 43210</p>
+      </div>
+      
+    </div>
+    <hr class="border-light">
+    <div class="text-center pb-3">
+      © 2025 Wanderly. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

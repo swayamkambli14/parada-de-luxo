@@ -1,0 +1,53 @@
+<% layout("/layouts/boilerplate") %>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New List</title>
+</head>
+<body>
+    <div class="col-8 offset-2">
+    <form method="post" action="/listings/create" novalidate class="needs-validation">
+
+        <div class="col-md-8" style="padding-top: 0.6rem;">
+    <label for="title" >Enter your title:</label>
+    <input type="text" id="title" name="title" placeholder="Enter your full title" class="form-control" required>
+    <div class="valid-feedback">Title is good! Not as u though</div>
+    <div class="invalid-feedback">Yeh tera Baap bharega</div><br>
+        </div>
+
+    <label for="description">Your Message:</label><br>
+    <textarea id="description" name="description" rows="2" cols="40" placeholder="Type your description here..." class="form-control" required></textarea>
+        <div class="valid-feedback">Thanks!Nothing can describe as u and u </div>
+        <div class="invalid-feedback">bckchdi mat kar lvde</div><br>
+    
+
+    <label for="image">Image URL:</label>
+    <input type="url" id="image" name="image[url]" placeholder="Enter url" class="form-control" ><br>
+
+    <div class="row">
+        <div class="col-md-4">    
+    <label for="price">Enter Price:</label>
+    <input type="text" id="price" name="price" placeholder="Enter Price" class="form-control" required>
+        <div class="valid-feedback">Thanks!But u already made it precious</div>
+        <div class="invalid-feedback">Pls enter Valid price</div><br>
+        </div>
+        
+        <div class="col-md-8">
+    <label for="location">Enter your City:</label>
+    <input type="text" id="location" name="location" placeholder="Enter your City" class="form-control" required>
+        <div class="valid-feedback">Thanks! Even heaven would endup same!</div>
+        <div class="invalid-feedback">Bsdk jagha batayega</div><br>
+        </div>
+
+    </div>
+
+    <div>
+    <label for="country">Enter your Country:</label>
+    <input type="text" id="country" name="country" placeholder="Enter your Country" class="form-control" required>
+        <div class="valid-feedback">Thanks! for locating heaven</div>
+        <div class="invalid-feedback">Pls Enter Country</div><br>
+        </div>
+    <button type="submit" style="background-color: #fe424d;color: white;border-radius: 5px;border: none;">Submit</button>
+    </form>
+ </div>
